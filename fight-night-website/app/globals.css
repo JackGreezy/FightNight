@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+/* Starry background */
+.stars-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.stars,
+.stars2,
+.stars3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.stars {
+  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png") repeat top center;
+  z-index: 0;
+}
+
+.stars2 {
+  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars2.png") repeat top center;
+  z-index: 1;
+  animation: stars-animation 100s linear infinite;
+}
+
+.stars3 {
+  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars3.png") repeat top center;
+  z-index: 2;
+  animation: stars-animation 150s linear infinite;
+}
+
+@keyframes stars-animation {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 10000px;
+  }
+}
+
