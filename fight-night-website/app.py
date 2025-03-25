@@ -14,7 +14,8 @@ import datetime
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})  # Enable CORS for all routes and origins
+# Allow all origins for now to debug
+CORS(app, origins="*", supports_credentials=True, allow_headers=["Content-Type", "Authorization", "Accept"])
 
 # MongoDB connection
 MONGO_URI = os.getenv("MONGO_URI")
@@ -86,6 +87,15 @@ def root():
             "/api/fighter-nomination",
             "/api/email-signup"
         ]
+    })
+
+# Add this simple test endpoint to your app.py
+@app.route('/test', methods=['GET'])
+def test():
+    """Simple test endpoint"""
+    return jsonify({
+        "message": "Test endpoint working",
+        "cors": "If you can see this, CORS is configured correctly"
     })
 
 # API Routes
